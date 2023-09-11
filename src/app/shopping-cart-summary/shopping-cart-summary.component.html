@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Order Summary</h4>
+        <p *ngIf=" !(shoppingCartItemCount===0) " class="card-text">You have {{shoppingCartItemCount}} items in your shopping cart.</p>
+        <ng-container *ngIf=" (shoppingCartItemCount===0) ">
+            <p  class="card-text">Your shopping cart is empty.</p>
+            <a routerLink="/" class="btn btn-secondary">Click here to navigate to Home Page</a>
+        </ng-container>
+        <ul *ngIf=" !(shoppingCartItemCount===0) " class="list-group list-group-flush">
+
+            <li *ngFor="let item of cartItems" class="list-group-item">
+                
+                <div class="row">
+                    <div class="col">
+                        <i >{{ item.quantity }} x {{ item.product.title }}</i>
+                    </div>
+
+                    <div class="col" style="text-align: right;">{{ (item.quantity * item.product.price)| currency :'INR':'symbol' }}</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                
+                <div class="row">
+                    <div class="col">
+                        <strong > Total Price</strong>
+                    </div>
+
+                    <div class="col" style="text-align: right;">{{totalPrice | currency :'INR':'symbol'}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

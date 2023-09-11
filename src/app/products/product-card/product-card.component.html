@@ -1,0 +1,21 @@
+<div  *ngIf="product.title" class="card dol" style=" max-height: 22rem;"> <!--width: 16rem;-->
+    <img style=" min-height: 13rem; max-height:13rem;" *ngIf="product.imageURL" [src]="product.imageURL" alt="{{product.title}}" class="card-img-top">
+    <div class="card-body">
+        <h3 class="card-title">{{product.title}}</h3>
+          
+          <p class="card-text">{{product.price | currency: 'INR':'symbol'}}</p>
+        
+    </div>
+    <div class="card-footer d-grid">
+      <!-- <button
+      *ngIf="getQuantity() ===0; else updateQuantity"
+        (click)="addToCart()" 
+        class="btn btn-primary">
+          Add to Cart
+      </button>
+      <ng-template #updateQuantity> -->
+        <product-quantity [showProductQuantity]="showProductQuantity" [product]="product" [numberToDisplay]="getQuantity()"></product-quantity>
+      <!-- </ng-template> -->
+      
+    </div>
+</div>

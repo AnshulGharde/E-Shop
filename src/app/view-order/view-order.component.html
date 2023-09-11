@@ -1,0 +1,6 @@
+<div class="row no-gutter">
+    <div class="col"></div>
+    <div *ngIf="admin==='true'" class="col"><a type="button" routerLink="/admin/orders" class="btn btn-secondary btn-sm" style="float: right;">Back</a ></div>
+    <div *ngIf="admin==='false'" class="col"><a type="button" routerLink="/my/orders" class="btn btn-secondary btn-sm" style="float: right;">Back</a ></div>
+</div>
+<order-details [orderID]="orderID"></order-details>

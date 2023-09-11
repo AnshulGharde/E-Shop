@@ -1,0 +1,20 @@
+<div class="no-gutters d-grid" *ngIf="showProductQuantity">
+<button
+      *ngIf="numberToDisplay ===0; else updateQuantity"
+        (click)="addToCart()" 
+        class="btn btn-primary">
+          Add to Cart
+</button>
+
+<ng-template #updateQuantity>
+  <div class="row no-gutters">
+      <div class="col no-gutters d-grid">
+        <button (click)="removeFromCart()" class="btn btn-danger">-</button>
+      </div>
+      <div class="col no-gutters text-center">{{ numberToDisplay }} in Cart</div>
+      <div class="col no-gutters d-grid">
+        <button (click)="addToCart()"  class="btn btn-success">+</button>
+      </div>
+  </div>
+</ng-template>
+</div>

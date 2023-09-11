@@ -1,0 +1,68 @@
+<h2>Order Details are given below.</h2>
+<h3>Order was placed on {{date | date :'fullDate'}} <!--{{date.date | date :'date'}} / {{date.month}} / {{date.year}}-->.</h3>
+<!--  -->
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col-md-1"></th>
+            <th> Product</th>
+            <th>Individual Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of order">
+            <tr>
+                <td>
+                    <div [style.backgroundImage]="'url(' + item.product.imageURL + ')'" class="thumbnail"></div>
+                </td>
+                <td>
+                    <h1>{{item.product.title}}</h1>
+                </td>
+                <td>{{item.product.price | currency :'INR':'symbol'}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{(item.product.price * item.quantity) | currency :'INR':'symbol'}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="col-md-1"></td>
+            <td> </td>
+            <td>Total Price</td>
+            <td></td>
+            <td>{{totalPrice | currency :'INR':'symbol'}}</td>
+        </tr>
+    </tfoot>
+</table>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <h2><strong>Customer Details:</strong> </h2>
+    </li>
+    <li class="list-group-item">
+        <div class="row no-gutter">
+            <div class="col no-gutter col-md-3">Name:</div>
+            <div class="col no-gutter">
+                <div>{{shipping.name}}</div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row no-gutter">
+            <div class="col no-gutter col-md-3">Address:</div>
+            <div class="col no-gutter">
+                <div>{{shipping.addressLine1}}</div>
+                <div>{{shipping.addressLine2}}</div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row no-gutter">
+            <div class="col no-gutter col-md-3">City:</div>
+            <div class="col no-gutter">
+                <div>{{shipping.city}}</div>
+            </div>
+        </div>
+    </li>
+</ul>
